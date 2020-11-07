@@ -12,18 +12,18 @@ const getRandomCoordinates = () =>{
 }
 
 //初始化state
-const iniitialState = {
+const initialState = {
   food:getRandomCoordinates(),
     direction:'RIGHT',
     speed:200,
     snakeDots: [
-      [0, 0],
+      [0,0],
       [2,0]
     ]
 }
 
 class App extends Component {
-  state = iniitialState;
+  state = initialState;
  //1键盘事件
  componentDidMount() {
    setInterval(this.moveSnake,this.state.speed );
@@ -33,6 +33,7 @@ class App extends Component {
  //更新状态
  componentDidUpdate(){
    this.checkIfOutBorders();
+   this.checkIfCollapsed()
    this.checkIfEat();
  }
  //2键盘函数
@@ -107,7 +108,7 @@ checkIfCollapsed(){
  //5游戏结束
  onGameOver(){
    alert(`游戏结束！你的得分为：${this.state.snakeDots.length}`);
-   this.setState(iniitialState);
+   this.setState(initialState);
  }
 
  //7验证是否吃到food方块
