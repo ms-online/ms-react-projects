@@ -33,6 +33,7 @@ class App extends Component {
  //更新状态
  componentDidUpdate(){
    this.checkIfOutBorders();
+   this.checkIfEat();
  }
  //2键盘函数
  onkeydown =(e) => {
@@ -109,6 +110,32 @@ checkIfCollapsed(){
    this.setState(iniitialState);
  }
 
+ //7验证是否吃到food方块
+ checkIfEat(){
+   let head = this.state.snakeDots[this.state.snakeDots.length -1];
+   let food = this.state.food;
+
+   if(head[0] === food[0] && head[1] === food[1]){
+     this.setState({
+       food:getRandomCoordinates(),
+     })
+     this.enlargtSnake();
+     this.increaseSpeed();
+   }
+ }
+
+ //8填充贪吃蛇
+ enlargtSnake(){
+   let newSnake = [...this.state.snakeDots];
+   newSnake.unshift([]);
+   this.setState({snakeDots: newSnake});
+ }
+//加速运动
+increaseSpeed(){
+  if(this.state.speed > 10 ){
+    this.setState({speed:this.state.speed - 10})
+  }
+}
   render() {
     return (
       <div className='game-area'>
