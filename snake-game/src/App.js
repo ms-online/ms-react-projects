@@ -11,20 +11,28 @@ const getRandomCoordinates = () =>{
   return [x, y];
 }
 
-class App extends Component {
-  state = {
-    food:getRandomCoordinates(),
+//初始化state
+const iniitialState = {
+  food:getRandomCoordinates(),
     direction:'RIGHT',
     speed:200,
     snakeDots: [
       [0, 0],
       [2,0]
     ]
-  }
+}
+
+class App extends Component {
+  state = iniitialState;
  //1键盘事件
  componentDidMount() {
    setInterval(this.moveSnake,this.state.speed );
    document.onkeydown = this.onkeydown;
+ }
+
+ //更新状态
+ componentDidUpdate(){
+   this.checkIfOutBorders();
  }
  //2键盘函数
  onkeydown =(e) => {
@@ -73,6 +81,32 @@ class App extends Component {
    this.setState({
      snakeDots:dots
    })
+ }
+
+ //4限制活动范围
+ checkIfOutBorders(){
+   let head = this.state.snakeDots[this.state.snakeDots.length - 1];
+   if(head[0] >= 100 || head[0] <0 || head[1] >= 100 || head[1] < 0){
+     this.onGameOver();
+   }
+ }
+
+ //6验证head是否撞击到自身
+checkIfCollapsed(){
+  let snake = [...this.state.snakeDots];
+  let head = snake[snake.length - 1];
+  snake.pop();
+  snake.forEach(dot => {
+    if(head[0] === dot[0] && head[1] === dot[1]){
+      this.onGameOver();
+    }
+  })
+}
+
+ //5游戏结束
+ onGameOver(){
+   alert(`游戏结束！你的得分为：${this.state.snakeDots.length}`);
+   this.setState(iniitialState);
  }
 
   render() {

@@ -10,7 +10,7 @@ export const Snake = ({ snakeDots }) => {
                     top:`${dot[1]}%`
                 }
                 return (
-                    <div className="snake-dot" style ={style}></div>
+                    <div key = {i} className="snake-dot" style ={style}></div>
                 )
             })}
         </div>
