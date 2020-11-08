@@ -23,7 +23,7 @@ app.post('/upload', (req, res) => {
         }
         res.json({
             fileName: file.name,
-            filePath:`/upload/${file.name}`
+            filePath:`/uploads/${file.name}`
         })
     })
 })
