@@ -1,11 +1,12 @@
 {
-  "name": "snake-game",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
+    "axios": "^0.21.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -21,12 +22,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "rules": {
-      "no-undef": "off",
-      "no-restricted-globals": "off",
-      "no-unused-vars": "off"
-    }
+    ]
   },
   "browserslist": {
     "production": [
@@ -34,6 +30,7 @@
       "not dead",
       "not op_mini all"
     ],
+    "proxy": "https://localhost:5001",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
