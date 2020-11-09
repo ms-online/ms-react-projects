@@ -3,7 +3,7 @@ import { fetchDailyData } from '../../api'
 import { Line, Bar } from 'react-chartjs-2';
 import styles from './Chart.module.css'
 
-export const Chart = () => {
+export const Chart = ({data:{confirmed, recovered,deaths, lastUpdate}, country}) => {
     const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -45,9 +45,34 @@ export const Chart = () => {
         ) :null
     )
 
+    //创建国家疫情数据的柱状图
+    const barChart = (
+        confirmed ? (
+            <Bar
+                data={{
+                    labels: ['确诊人数', '累计治愈', '死亡人数'],
+                    datasets: [{
+                        label: 'People',
+                        backgroundColor: [
+                            'rgba(0,0,255,0.5)',
+                            'rgba(0,255,0,0.5)',
+                            'rgba(255,0,0,0.5)',
+                        ],
+                        data:[confirmed.value, recovered.value, deaths.value]
+                }]
+                }}
+                option={{
+                    legend:{display:false},
+                    title:{diplay:true, text:`${country}的新冠肺炎实时数据`},
+                }}
+            
+            />
+        ) :null
+    )
+
     return (
         <div className={styles.container}>
-            {lineChart}
+            {country ? barChart:lineChart}
         </div>
     )
 }
