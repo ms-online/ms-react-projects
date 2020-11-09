@@ -13,7 +13,7 @@ export const Chart = () => {
 
     fetchMyAPI();
   }, []);
-    console.log(dailyData)
+    // console.log(dailyData)
     // 设置折线图图表
     const lineChart = (
         dailyData.length ? (
