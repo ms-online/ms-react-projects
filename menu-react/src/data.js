@@ -69,5 +69,15 @@ const menu = [
     accusantium maxime quos beatae sequi rem sit porro nemo quasi officia
     perferendis in rerum consequatur saepe fugit, odio ea hic?   `,
   },
+  {
+    id: 9,
+    title: '啤酒',
+    category: 'drink',
+    price: 12.99,
+    img: './images/item-8.jpeg',
+    desc: ` Nulla fugiat
+    accusantium maxime quos beatae sequi rem sit porro nemo quasi officia
+    perferendis in rerum consequatur saepe fugit, odio ea hic?   `,
+  }
 ];
 export default menu;
