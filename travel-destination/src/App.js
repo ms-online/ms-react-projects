@@ -30,14 +30,14 @@ function App() {
   if (loading) {
     return (
       <main>
-        <Loading tours={tours}/>
+        <Loading />
       </main>
     )
   }
   return (
-    <div className="App">
-      <Tours/>
-    </div>
+    <main>
+      <Tours tours={tours}/>
+    </main>
   );
 }
 

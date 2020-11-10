@@ -1,10 +1,19 @@
 import React from 'react'
-
+import Tour from './Tour'
 const Tours = ({tours}) => {
     return (
-        <div >
-            旅游目的地
-        </div>
+        <section>
+            <div className="title">
+                <h2>热门旅游目的地</h2>
+                <div className="underline"></div>
+            </div>
+
+            <div>
+                {tours.map(tour => {
+                    return <Tour key={tour.id} {...tour} />
+                })}
+             </div>
+        </section>
     )
 }
 
