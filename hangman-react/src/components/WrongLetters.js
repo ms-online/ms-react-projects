@@ -1,10 +1,13 @@
 import React from 'react'
 
-const WrongLetters = () => {
+const WrongLetters = ({wrongLetters}) => {
     return (
         <div className="wrong-letters-container">
-        <div id="wrong-letters"></div>
+        <div id="wrong-letters">
+        {wrongLetters.length > 0 && <p>错误</p>}
+        {wrongLetters.map((letter,i) => <span key={i}>{letter}</span>).reduce((prev, curr) => prev === null ? [curr] : [prev, ',', curr],null)}
       </div>
+        </div>
     )
 }
 
