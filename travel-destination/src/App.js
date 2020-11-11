@@ -26,6 +26,12 @@ function App() {
     fetchTours();
   }, [])
   console.log(tours)
+
+ //删除卡片
+  const removeTour = (id) => {
+    const newTours = tours.filter(tour => tour.id !== id);
+    setTours(newTours)
+  }
   //判断加载
   if (loading) {
     return (
@@ -34,9 +40,20 @@ function App() {
       </main>
     )
   }
+  //判断没有目的地信息
+  if (tours.length === 0) {
+    return (
+      <main>
+        <div className="title">
+          <h2>没有旅游目的地信息</h2>
+          <button className="btn" onClick={() =>fetchTours()}>重新获取</button>
+        </div>
+      </main>
+    )
+  }
   return (
     <main>
-      <Tours tours={tours}/>
+      <Tours tours={tours} removeTour={removeTour}/>
     </main>
   );
 }

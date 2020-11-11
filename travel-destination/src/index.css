@@ -164,7 +164,7 @@ main {
   margin-bottom: 4rem;
 }
 .underline {
-  width: 6rem;
+  width: 16rem;
   height: 0.25rem;
   background: var(--clr-primary-5);
   margin-left: auto;
