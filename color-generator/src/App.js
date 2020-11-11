@@ -32,18 +32,12 @@ function App() {
           <button className="btn" type="submit" >提交</button>
         </form>
       </section>
-      <section className='colors'>
+      <section className="colors">
         {list.map((color, index) => {
           return (
-            <SingleColor
-            key={index}
-            {...color}
-              index={index}
-              hexColor= {color.hex}
-          />
-            )
+            <SingleColor key={index} color={color} index={index}/>
+          )
         })}
-       
       </section>
     </>
   );
