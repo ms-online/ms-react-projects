@@ -1,6 +1,6 @@
 import React , { useState }from 'react';
 import Values from 'values.js'
-
+import SingleColor from './SingleColor'
 function App() {
    
   //初始化保存的state
@@ -22,7 +22,6 @@ function App() {
     
     
   }
-  
 
   return (
     <>
@@ -33,8 +32,18 @@ function App() {
           <button className="btn" type="submit" >提交</button>
         </form>
       </section>
-      <section>
-          颜色列表
+      <section className='colors'>
+        {list.map((color, index) => {
+          return (
+            <SingleColor
+            key={index}
+            {...color}
+              index={index}
+              hexColor= {color.hex}
+          />
+            )
+        })}
+       
       </section>
     </>
   );
