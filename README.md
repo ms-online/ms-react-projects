@@ -3,4 +3,5 @@ react 实战
 
 
 启动方式：
-npm install & start
+npm install
+npm start
